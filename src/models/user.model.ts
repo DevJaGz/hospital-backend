@@ -31,7 +31,7 @@ const UserSchema = new Schema<IUser>({
 
 // Remove __v and _id from each user and add/set uid with _id
 UserSchema.method('toJSON', function () {
-  const { __v: _v, _id, ...Object } = this.toObject()
+  const { __v: _v, _id, password, ...Object } = this.toObject()
   Object.uid = _id
   return Object
 })
