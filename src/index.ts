@@ -15,6 +15,7 @@ app.use(cors()) // allow CORS
 app.use(express.json()) // Read and Parse Body
 /* --------------------------------- ROUTES --------------------------------- */
 app.use('/api/users', router.userRouter)
+app.use('/api/hospitals', router.hospitalRouter)
 app.use('/api/login', router.authRouter)
 /* -------------------------------------------------------------------------- */
 /*                                 RUN SERVER                                 */

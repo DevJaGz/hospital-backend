@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
-import { IResponse } from '../interfaces/user.interface'
+import { IResponse } from '../interfaces/global.interface'
 
 export const validateJWTMiddleware = (req: Request, res: Response, next: NextFunction): void => {
   try {

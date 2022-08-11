@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from 'express'
 import { validationResult } from 'express-validator'
-import { IResponse } from '../interfaces/user.interface'
+import { IResponse } from '../interfaces/global.interface'
 
 export const validateUserFieldsMiddleware = (req: Request, res: Response, next: NextFunction): void => {
   const errors = validationResult(req)

@@ -1,8 +1,9 @@
 import { Request, Response } from 'express'
-import { IResponse, IUser } from '../interfaces/user.interface'
+import { IUser } from '../interfaces/user.interface'
 import { User } from '../models/user.model'
 import bcrypt from 'bcrypt'
 import { generateJWT } from '../helpers'
+import { IResponse } from '../interfaces/global.interface'
 
 export const get = async (req: Request, res: Response): Promise<void> => {
   try {
