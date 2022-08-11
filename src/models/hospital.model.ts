@@ -9,9 +9,10 @@ const HospitalSchema = new Schema<IHospital>({
   img: {
     type: String
   },
-  user: {
+  user_id: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   }
 }, { collection: 'hospitals' })
 

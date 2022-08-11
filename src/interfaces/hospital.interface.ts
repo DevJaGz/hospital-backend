@@ -1,8 +1,7 @@
-import { IUser } from './user.interface'
-
-export interface IHospital{
+import { Types } from 'mongoose'
+export interface IHospital {
   id: string
   name: string
   img: string
-  user: IUser
+  user_id: Types.ObjectId
 }

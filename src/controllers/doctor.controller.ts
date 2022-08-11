@@ -1,14 +1,12 @@
 import { Response, Request } from 'express'
 import { IResponse } from '../interfaces/global.interface'
-import { IHospital } from '../interfaces/hospital.interface'
-import { Hospital } from '../models/hospital.model'
 
-class HospitalController {
+class DoctorController {
   async get (_req: Request, res: Response): Promise<void> {
     try {
       const response: IResponse = {
         ok: true,
-        msg: 'GET works!'
+        msg: 'Doctor GET works!'
       }
       res.json(response)
     } catch (error) {
@@ -20,28 +18,11 @@ class HospitalController {
     }
   }
 
-  async post (req: Request, res: Response): Promise<void> {
+  async post (_req: Request, res: Response): Promise<void> {
     try {
-      const { name } = req.body as IHospital
-      const nameAlreadyExist = await Hospital.findOne({ name })
-      if (nameAlreadyExist != null) {
-        const response: IResponse = {
-          ok: false,
-          errors: { name: { msg: 'Name already exists', param: 'name', location: 'body' } }
-        }
-        res.status(400).json(response)
-        return
-      }
-      const reqCopy = req as any
-      const uid = reqCopy.JWT_payload.uid
-      const hospital = new Hospital({
-        ...req.body,
-        user_id: uid
-      })
-      const hospitalDB = await hospital.save()
       const response: IResponse = {
         ok: true,
-        hospital: hospitalDB
+        msg: 'Doctor POST works!'
       }
       res.json(response)
     } catch (error) {
@@ -57,7 +38,7 @@ class HospitalController {
     try {
       const response: IResponse = {
         ok: true,
-        msg: 'DELETE works!'
+        msg: 'Doctor DELETE works!'
       }
       res.json(response)
     } catch (error) {
@@ -73,7 +54,7 @@ class HospitalController {
     try {
       const response: IResponse = {
         ok: true,
-        msg: 'PUT works!'
+        msg: 'Doctor PUT works!'
       }
       res.json(response)
     } catch (error) {
@@ -86,4 +67,4 @@ class HospitalController {
   }
 }
 
-export const hospitalController = new HospitalController()
+export const doctorController = new DoctorController()

@@ -3,8 +3,9 @@
  */
 
 import { Router } from 'express'
+import { check } from 'express-validator'
 import { hospitalController } from '../controllers'
-import { validateJWTMiddleware } from '../middlewares'
+import { validateJWTMiddleware, validateUserFieldsMiddleware } from '../middlewares'
 export const hospitalRouter = Router()
 
 hospitalRouter.get('/', [
@@ -13,7 +14,9 @@ hospitalRouter.get('/', [
 hospitalController.get)
 
 hospitalRouter.post('/', [
-  validateJWTMiddleware
+  validateJWTMiddleware,
+  check('name', 'name is required').not().isEmpty(),
+  validateUserFieldsMiddleware
 ],
 hospitalController.post)
 
